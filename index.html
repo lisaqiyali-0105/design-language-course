@@ -937,6 +937,242 @@ main {
   main { padding: 32px 24px 80px; }
   #progress-bar { left: 0; }
 }
+
+/* ── EYE TEST — SCORE BAR ─────────────────────────── */
+.quiz-score-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 48px;
+}
+.quiz-score-label {
+  font-family: var(--ff-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.quiz-score-value {
+  font-family: var(--ff-mono);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+.quiz-score-dots {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+}
+.quiz-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--border-2);
+  transition: background 0.35s;
+}
+.quiz-dot.correct { background: var(--accent); }
+.quiz-dot.wrong   { background: var(--red); }
+
+/* ── EYE TEST — QUIZ ITEMS ────────────────────────── */
+.quiz-item {
+  margin-bottom: 52px;
+  padding-bottom: 52px;
+  border-bottom: 1px solid var(--border);
+}
+.quiz-item:last-of-type { border-bottom: none; margin-bottom: 0; }
+.quiz-num {
+  font-family: var(--ff-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  display: block;
+  margin-bottom: 8px;
+}
+.quiz-prompt-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.quiz-module-tag {
+  font-family: var(--ff-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(13,155,114,0.08);
+  padding: 3px 8px;
+  border-radius: 3px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.quiz-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.quiz-option {
+  background: var(--surface);
+  cursor: pointer;
+  position: relative;
+  transition: background 0.15s;
+  user-select: none;
+}
+.quiz-option:hover:not(.answered) { background: var(--surface-2); }
+.quiz-option-label {
+  font-family: var(--ff-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  color: var(--text-3);
+  padding: 10px 16px 0;
+  display: block;
+}
+.quiz-render {
+  padding: 12px 16px 16px;
+  pointer-events: none;
+}
+.quiz-option-footer {
+  display: none;
+  padding: 8px 16px;
+  font-family: var(--ff-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-top: 1px solid var(--border);
+}
+.quiz-option.correct-answer .quiz-option-footer {
+  display: block;
+  color: var(--accent);
+  background: rgba(13,155,114,0.06);
+}
+.quiz-option.wrong-answer .quiz-option-footer {
+  display: block;
+  color: var(--red);
+  background: rgba(192,53,37,0.04);
+}
+.quiz-option.correct-answer { outline: 2px solid var(--accent); outline-offset: -2px; }
+.quiz-option.wrong-answer   { outline: 2px solid var(--red);    outline-offset: -2px; }
+.quiz-option.answered { cursor: default; }
+
+/* ── EYE TEST — REVEAL ────────────────────────────── */
+.quiz-reveal {
+  display: none;
+  margin-top: 14px;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+.quiz-reveal.show { display: block; }
+.quiz-reveal-verdict {
+  display: block;
+  font-family: var(--ff-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.quiz-reveal-verdict.v-correct { color: var(--accent); }
+.quiz-reveal-verdict.v-wrong   { color: var(--red); }
+.quiz-reveal p {
+  font-size: 0.85rem;
+  color: var(--text-2);
+  line-height: 1.7;
+  margin: 0;
+  max-width: 100%;
+}
+.quiz-reveal strong { color: var(--text); }
+
+/* ── CANTUNSEE CARD ───────────────────────────────── */
+.cantunsee-card {
+  margin-top: 56px;
+  background: var(--text);
+  border-radius: 10px;
+  padding: 44px 44px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.cantunsee-card::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 240px; height: 240px;
+  border-radius: 50%;
+  background: rgba(13,155,114,0.14);
+  pointer-events: none;
+}
+.cantunsee-eyebrow {
+  font-family: var(--ff-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 16px;
+}
+.cantunsee-card h3 {
+  font-family: var(--ff-display);
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 400;
+  font-style: italic;
+  color: #F9F6F1;
+  margin-bottom: 14px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.cantunsee-card > p {
+  font-size: 0.9rem;
+  color: rgba(249,246,241,0.6);
+  max-width: 460px;
+  line-height: 1.75;
+  margin-bottom: 28px;
+}
+.cantunsee-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.cantunsee-link:hover { opacity: 0.85; text-decoration: none; }
+.cantunsee-stats {
+  display: flex;
+  gap: 32px;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.cantunsee-stat-value {
+  font-family: var(--ff-mono);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #F9F6F1;
+  display: block;
+}
+.cantunsee-stat-label {
+  font-size: 0.72rem;
+  color: rgba(249,246,241,0.45);
+  margin-top: 2px;
+  display: block;
+}
 </style>
 </head>
 <body>
@@ -963,6 +1199,7 @@ main {
     <li class="nav-item"><a href="#m8"><span class="num">08</span> Giving Feedback</a></li>
     <li class="nav-item"><a href="#m9"><span class="num">09</span> Design Movements</a></li>
     <li class="nav-item"><a href="#m10"><span class="num">10</span> Navigation Patterns</a></li>
+    <li class="nav-item"><a href="#m11"><span class="num">11</span> Test Your Eye</a></li>
   </ul>
 
   <div class="sidebar-footer">
@@ -2604,6 +2841,250 @@ main {
     </div>
   </section>
 
+  <!-- ── MODULE 11: TEST YOUR EYE ─────────────────── -->
+  <section class="module" id="m11">
+    <div class="module-header">
+      <span class="module-num">Module 11 — Active Practice</span>
+      <h2>Test Your Eye</h2>
+      <p class="module-tagline">You've learned the vocabulary. Now train the reflex.</p>
+    </div>
+
+    <div class="prose">
+      <p>Reading about design is passive. Recognizing it in the wild is the skill that actually matters in a room full of designers. Each challenge below shows two versions of a real UI pattern. One is better. Pick it — then read why.</p>
+    </div>
+
+    <!-- Score bar -->
+    <div class="quiz-score-bar">
+      <span class="quiz-score-label">Score</span>
+      <span class="quiz-score-value" id="quiz-score-value">0 / 5</span>
+      <div class="quiz-score-dots">
+        <div class="quiz-dot" id="qdot-0"></div>
+        <div class="quiz-dot" id="qdot-1"></div>
+        <div class="quiz-dot" id="qdot-2"></div>
+        <div class="quiz-dot" id="qdot-3"></div>
+        <div class="quiz-dot" id="qdot-4"></div>
+      </div>
+    </div>
+
+    <!-- Challenge 1: Visual Hierarchy -->
+    <div class="quiz-item" data-answer="b">
+      <span class="quiz-num">Challenge 01 / 05</span>
+      <p class="quiz-prompt-text">Which card has stronger visual hierarchy?</p>
+      <span class="quiz-module-tag">Module 01 — Visual Hierarchy</span>
+      <div class="quiz-options">
+        <div class="quiz-option" data-choice="a">
+          <span class="quiz-option-label">A</span>
+          <div class="quiz-render">
+            <div style="background:#fff;padding:18px;border-radius:4px;border:1px solid #E0D9CE;">
+              <div style="font-size:13px;font-weight:500;color:#1E1C19;margin-bottom:6px;">Ship faster with AI</div>
+              <div style="font-size:12px;color:#5C5852;margin-bottom:10px;line-height:1.5;">Automate the repetitive parts of your workflow so your team can focus on what matters.</div>
+              <button style="font-size:12px;padding:6px 12px;background:#fff;border:1px solid #C5BDB2;color:#5C5852;border-radius:4px;font-family:inherit;">Get started</button>
+            </div>
+          </div>
+          <div class="quiz-option-footer">✗ Weak hierarchy</div>
+        </div>
+        <div class="quiz-option" data-choice="b">
+          <span class="quiz-option-label">B</span>
+          <div class="quiz-render">
+            <div style="background:#fff;padding:18px;border-radius:4px;border:1px solid #E0D9CE;">
+              <div style="font-size:22px;font-weight:700;color:#1E1C19;margin-bottom:8px;line-height:1.1;letter-spacing:-0.02em;">Ship faster<br>with AI</div>
+              <div style="font-size:11px;color:#9E9890;margin-bottom:14px;line-height:1.55;">Automate the repetitive parts of your workflow so your team can focus on what matters.</div>
+              <button style="font-size:11px;padding:8px 16px;background:#0D9B72;border:none;color:#fff;border-radius:4px;font-weight:600;font-family:inherit;">Get started →</button>
+            </div>
+          </div>
+          <div class="quiz-option-footer">✓ Clear hierarchy</div>
+        </div>
+      </div>
+      <div class="quiz-reveal">
+        <span class="quiz-reveal-verdict"></span>
+        <p><strong>B wins on visual hierarchy.</strong> Option A has three elements at nearly the same visual weight — the eye doesn't know where to start. Option B uses <strong>size contrast</strong> (22px vs 11px), <strong>weight contrast</strong> (700 vs normal), and a high-contrast CTA to create a clear reading order: headline → body → action. The focal point is unambiguous.</p>
+      </div>
+    </div>
+
+    <!-- Challenge 2: Spacing & Layout -->
+    <div class="quiz-item" data-answer="a">
+      <span class="quiz-num">Challenge 02 / 05</span>
+      <p class="quiz-prompt-text">Which form has better spatial rhythm?</p>
+      <span class="quiz-module-tag">Module 04 — Spacing & Layout</span>
+      <div class="quiz-options">
+        <div class="quiz-option" data-choice="a">
+          <span class="quiz-option-label">A</span>
+          <div class="quiz-render">
+            <div style="background:#fff;padding:16px;border-radius:4px;border:1px solid #E0D9CE;">
+              <div style="margin-bottom:14px;">
+                <label style="font-size:10px;font-weight:600;color:#5C5852;display:block;margin-bottom:5px;letter-spacing:0.04em;text-transform:uppercase;">Email</label>
+                <input readonly style="width:100%;padding:8px 10px;border:1px solid #D5CEC4;border-radius:4px;font-size:12px;color:#1E1C19;background:#F9F6F1;" value="you@company.com" />
+              </div>
+              <div style="margin-bottom:14px;">
+                <label style="font-size:10px;font-weight:600;color:#5C5852;display:block;margin-bottom:5px;letter-spacing:0.04em;text-transform:uppercase;">Password</label>
+                <input readonly type="password" style="width:100%;padding:8px 10px;border:1px solid #D5CEC4;border-radius:4px;font-size:12px;background:#F9F6F1;" value="password" />
+              </div>
+              <button style="width:100%;padding:9px;background:#0D9B72;color:#fff;border:none;border-radius:4px;font-size:12px;font-weight:600;font-family:inherit;">Sign in</button>
+            </div>
+          </div>
+          <div class="quiz-option-footer">✓ Consistent rhythm</div>
+        </div>
+        <div class="quiz-option" data-choice="b">
+          <span class="quiz-option-label">B</span>
+          <div class="quiz-render">
+            <div style="background:#fff;padding:16px;border-radius:4px;border:1px solid #E0D9CE;">
+              <div style="margin-bottom:3px;">
+                <label style="font-size:10px;font-weight:600;color:#5C5852;display:block;margin-bottom:1px;letter-spacing:0.04em;text-transform:uppercase;">Email</label>
+                <input readonly style="width:100%;padding:4px 6px;border:1px solid #D5CEC4;border-radius:4px;font-size:12px;color:#1E1C19;background:#F9F6F1;" value="you@company.com" />
+              </div>
+              <div style="margin-bottom:22px;">
+                <label style="font-size:10px;font-weight:600;color:#5C5852;display:block;margin-bottom:9px;letter-spacing:0.04em;text-transform:uppercase;">Password</label>
+                <input readonly type="password" style="width:100%;padding:13px 6px;border:1px solid #D5CEC4;border-radius:4px;font-size:12px;background:#F9F6F1;" value="password" />
+              </div>
+              <button style="width:100%;padding:3px;background:#0D9B72;color:#fff;border:none;border-radius:4px;font-size:12px;font-weight:600;font-family:inherit;">Sign in</button>
+            </div>
+          </div>
+          <div class="quiz-option-footer">✗ Inconsistent spacing</div>
+        </div>
+      </div>
+      <div class="quiz-reveal">
+        <span class="quiz-reveal-verdict"></span>
+        <p><strong>A has consistent spatial rhythm.</strong> Every field uses the same label-to-input gap (5px), the same field-to-field gap (14px), and the same internal padding (8px). In B, the spacing is arbitrary — 1px label gap in the first field, 9px in the second; the button is nearly flat. <strong>Spatial consistency is invisible when done right and immediately jarring when wrong.</strong> Good spacing follows a system (multiples of 4 or 8), not intuition.</p>
+      </div>
+    </div>
+
+    <!-- Challenge 3: Typography -->
+    <div class="quiz-item" data-answer="b">
+      <span class="quiz-num">Challenge 03 / 05</span>
+      <p class="quiz-prompt-text">Which passage is easier to read?</p>
+      <span class="quiz-module-tag">Module 02 — Typography</span>
+      <div class="quiz-options">
+        <div class="quiz-option" data-choice="a">
+          <span class="quiz-option-label">A</span>
+          <div class="quiz-render">
+            <div style="padding:14px 4px;">
+              <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:#1E1C19;margin-bottom:8px;line-height:1.3;">THE IMPORTANCE OF GOOD TYPOGRAPHY IN USER INTERFACES</div>
+              <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#5C5852;line-height:1.5;">GOOD TYPOGRAPHY IS INVISIBLE. WHEN TYPE WORKS, READERS ABSORB CONTENT WITHOUT NOTICING THE VESSEL. WHEN IT FAILS, THE FRICTION IS FELT BEFORE IT IS NAMED.</div>
+            </div>
+          </div>
+          <div class="quiz-option-footer">✗ All-caps body text</div>
+        </div>
+        <div class="quiz-option" data-choice="b">
+          <span class="quiz-option-label">B</span>
+          <div class="quiz-render">
+            <div style="padding:14px 4px;">
+              <div style="font-size:15px;font-weight:700;color:#1E1C19;margin-bottom:8px;line-height:1.2;letter-spacing:-0.01em;">The importance of good typography</div>
+              <div style="font-size:12px;color:#5C5852;line-height:1.75;">Good typography is invisible. When type works, readers absorb content without noticing the vessel. When it fails, the friction is felt before it is named.</div>
+            </div>
+          </div>
+          <div class="quiz-option-footer">✓ Proper hierarchy</div>
+        </div>
+      </div>
+      <div class="quiz-reveal">
+        <span class="quiz-reveal-verdict"></span>
+        <p><strong>B is dramatically easier to read.</strong> Option A uses all-caps for body copy — a common mistake. <strong>All-caps works for 2–4 word labels; it destroys legibility at paragraph length</strong> because the eye reads the silhouette of word shapes, not individual letters. All-caps flattens those shapes into uniform rectangles. B uses sentence case with generous line-height (1.75) and a clear heading-to-body size contrast, letting the eye move naturally.</p>
+      </div>
+    </div>
+
+    <!-- Challenge 4: Color Usage -->
+    <div class="quiz-item" data-answer="a">
+      <span class="quiz-num">Challenge 04 / 05</span>
+      <p class="quiz-prompt-text">Which uses color more purposefully?</p>
+      <span class="quiz-module-tag">Module 03 — Color</span>
+      <div class="quiz-options">
+        <div class="quiz-option" data-choice="a">
+          <span class="quiz-option-label">A</span>
+          <div class="quiz-render">
+            <div style="background:#fff;padding:16px;border-radius:4px;border:1px solid #E0D9CE;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+                <div style="font-size:12px;font-weight:600;color:#1E1C19;">New integration</div>
+                <span style="font-size:9px;padding:3px 7px;background:#F2EDE6;color:#9E9890;border-radius:3px;font-weight:600;letter-spacing:0.06em;">BETA</span>
+              </div>
+              <div style="font-size:11px;color:#5C5852;margin-bottom:13px;line-height:1.55;">Connect your Slack workspace to receive real-time alerts.</div>
+              <button style="font-size:11px;padding:8px 14px;background:#0D9B72;color:#fff;border:none;border-radius:4px;font-weight:600;font-family:inherit;">Enable integration</button>
+            </div>
+          </div>
+          <div class="quiz-option-footer">✓ Color signals priority</div>
+        </div>
+        <div class="quiz-option" data-choice="b">
+          <span class="quiz-option-label">B</span>
+          <div class="quiz-render">
+            <div style="background:#fff;padding:16px;border-radius:4px;border:1px solid #E0D9CE;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+                <div style="font-size:12px;font-weight:600;color:#1E1C19;">New integration</div>
+                <span style="font-size:9px;padding:3px 7px;background:#0D9B72;color:#fff;border-radius:3px;font-weight:600;letter-spacing:0.06em;">BETA</span>
+              </div>
+              <div style="font-size:11px;color:#5C5852;margin-bottom:13px;line-height:1.55;">Connect your Slack workspace to receive real-time alerts.</div>
+              <button style="font-size:11px;padding:8px 14px;background:#0D9B72;color:#fff;border:none;border-radius:4px;font-weight:600;font-family:inherit;">Enable integration</button>
+            </div>
+          </div>
+          <div class="quiz-option-footer">✗ Accent color diluted</div>
+        </div>
+      </div>
+      <div class="quiz-reveal">
+        <span class="quiz-reveal-verdict"></span>
+        <p><strong>A uses color as a signal, not decoration.</strong> In B, both the "BETA" badge and the CTA button use the same accent green — so the color no longer communicates <em>priority</em>, it just means "thing that exists." In A, the accent is reserved for the one action you most want the user to take. The badge uses a neutral, muted tone. <strong>Accent colors lose meaning when overused.</strong> Every additional use dilutes the signal.</p>
+      </div>
+    </div>
+
+    <!-- Challenge 5: Alignment -->
+    <div class="quiz-item" data-answer="b">
+      <span class="quiz-num">Challenge 05 / 05</span>
+      <p class="quiz-prompt-text">Which notification is better aligned?</p>
+      <span class="quiz-module-tag">Module 06 — Gestalt</span>
+      <div class="quiz-options">
+        <div class="quiz-option" data-choice="a">
+          <span class="quiz-option-label">A</span>
+          <div class="quiz-render">
+            <div style="background:#fff;padding:18px;border-radius:4px;border:1px solid #E0D9CE;">
+              <div style="text-align:center;font-size:15px;font-weight:700;color:#1E1C19;margin-bottom:8px;">Your report is ready</div>
+              <div style="text-align:left;font-size:11px;color:#5C5852;margin-bottom:14px;line-height:1.55;">We've finished processing your Q4 export. Download it now or view the summary in the dashboard.</div>
+              <div style="text-align:center;">
+                <button style="font-size:11px;padding:8px 16px;background:#0D9B72;color:#fff;border:none;border-radius:4px;font-weight:600;font-family:inherit;">Download report</button>
+              </div>
+            </div>
+          </div>
+          <div class="quiz-option-footer">✗ Mixed alignment axes</div>
+        </div>
+        <div class="quiz-option" data-choice="b">
+          <span class="quiz-option-label">B</span>
+          <div class="quiz-render">
+            <div style="background:#fff;padding:18px;border-radius:4px;border:1px solid #E0D9CE;">
+              <div style="text-align:left;font-size:15px;font-weight:700;color:#1E1C19;margin-bottom:8px;">Your report is ready</div>
+              <div style="text-align:left;font-size:11px;color:#5C5852;margin-bottom:14px;line-height:1.55;">We've finished processing your Q4 export. Download it now or view the summary in the dashboard.</div>
+              <button style="font-size:11px;padding:8px 16px;background:#0D9B72;color:#fff;border:none;border-radius:4px;font-weight:600;font-family:inherit;">Download report</button>
+            </div>
+          </div>
+          <div class="quiz-option-footer">✓ Consistent left axis</div>
+        </div>
+      </div>
+      <div class="quiz-reveal">
+        <span class="quiz-reveal-verdict"></span>
+        <p><strong>B has a single, consistent alignment axis.</strong> In A, the heading is centered, the body is left-aligned, and the button is centered again — three elements pulling in two directions. This is a Gestalt failure: the eye is constantly resetting its anchor point. Option B aligns everything to the left edge. <strong>Picking one alignment axis and committing to it is a fundamental principle of visual coherence.</strong> Center-alignment works for short, isolated headings — not for multi-element components.</p>
+      </div>
+    </div>
+
+    <!-- cantunsee.space CTA -->
+    <div class="cantunsee-card">
+      <span class="cantunsee-eyebrow">Practice Arena</span>
+      <h3>Think you've got<br>a designer's eye?</h3>
+      <p>Can't Unsee is a free online game with 100+ real design challenges — two versions of a UI, one correct. The differences get subtler as you advance. It's the fastest way to train the reflex of noticing what most people walk right past.</p>
+      <a class="cantunsee-link" href="https://cantunsee.space/" target="_blank" rel="noopener">
+        Train your eye →
+      </a>
+      <div class="cantunsee-stats">
+        <div>
+          <span class="cantunsee-stat-value">100+</span>
+          <span class="cantunsee-stat-label">design challenges</span>
+        </div>
+        <div>
+          <span class="cantunsee-stat-value">3 levels</span>
+          <span class="cantunsee-stat-label">Easy → Advanced</span>
+        </div>
+        <div>
+          <span class="cantunsee-stat-value">Free</span>
+          <span class="cantunsee-stat-label">no sign-up needed</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
 </main>
 
 <!-- MOVEMENT MODAL -->
@@ -2826,6 +3307,67 @@ document.querySelectorAll('.movement-card').forEach(card => {
     document.body.style.overflow = 'hidden';
   });
 });
+
+// ── EYE TEST QUIZ ──────────────────────────────────
+(function() {
+  var quizScore = 0;
+  var quizItems = document.querySelectorAll('.quiz-item');
+  var scoreEl = document.getElementById('quiz-score-value');
+  var dots = [
+    document.getElementById('qdot-0'),
+    document.getElementById('qdot-1'),
+    document.getElementById('qdot-2'),
+    document.getElementById('qdot-3'),
+    document.getElementById('qdot-4')
+  ];
+
+  function updateScoreDisplay() {
+    if (scoreEl) scoreEl.textContent = quizScore + ' / ' + quizItems.length;
+  }
+
+  quizItems.forEach(function(item, idx) {
+    var correctAnswer = item.dataset.answer;
+    var options = item.querySelectorAll('.quiz-option');
+    var reveal = item.querySelector('.quiz-reveal');
+    var verdict = item.querySelector('.quiz-reveal-verdict');
+
+    options.forEach(function(opt) {
+      opt.addEventListener('click', function() {
+        if (item.dataset.answered) return;
+        item.dataset.answered = 'true';
+
+        var chosen = opt.dataset.choice;
+        var isCorrect = chosen === correctAnswer;
+        if (isCorrect) quizScore++;
+
+        options.forEach(function(o) {
+          o.classList.add('answered');
+          if (o.dataset.choice === correctAnswer) {
+            o.classList.add('correct-answer');
+          } else {
+            o.classList.add('wrong-answer');
+          }
+        });
+
+        if (reveal) {
+          reveal.classList.add('show');
+          if (verdict) {
+            verdict.textContent = isCorrect
+              ? '✓ Correct — well spotted.'
+              : '✗ Not quite — see why ' + correctAnswer.toUpperCase() + ' is the better choice:';
+            verdict.className = 'quiz-reveal-verdict ' + (isCorrect ? 'v-correct' : 'v-wrong');
+          }
+        }
+
+        if (dots[idx]) {
+          dots[idx].classList.add(isCorrect ? 'correct' : 'wrong');
+        }
+
+        updateScoreDisplay();
+      });
+    });
+  });
+})();
 
 function closeModal() {
   modal.classList.remove('open');
