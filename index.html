@@ -1868,6 +1868,50 @@ main {
     </div>
 
     <div class="prose">
+      <h3>Object Snapping</h3>
+      <p>
+        Snapping is what makes alignment feel effortless in design tools. When you drag an element close to another — a button near a text block, an icon inside a card — the tool detects the proximity and <strong>automatically locks it into perfect alignment</strong>. The element "snaps" to the nearest alignment point like a magnet.
+      </p>
+      <p>
+        There are three types: <strong>grid snapping</strong> (elements snap to the 8pt grid), <strong>object snapping</strong> (elements snap to the edges, centers, or corners of other elements), and <strong>guide snapping</strong> (elements snap to manually drawn guides). Most tools have all three on by default.
+      </p>
+      <p>
+        Snapping is what enforces the 8-point grid in practice. Without it, designers would need to manually check every spacing value. With it, the tool does the precision work — which is why "pixel-perfect" designs are achievable at speed.
+      </p>
+    </div>
+
+    <!-- Snapping Demo -->
+    <div class="demo-wrap">
+      <div class="demo-label">Object snapping — misaligned vs. snapped to grid</div>
+      <div class="demo-compare">
+        <div>
+          <span class="demo-tag tag-bad">✗ Freeform — nothing aligns</span>
+          <div style="background:var(--surface-2); border-radius:10px; padding:24px; min-height:140px; position:relative;">
+            <div style="position:absolute; top:18px; left:22px; background:var(--accent); opacity:0.15; border-radius:4px; width:110px; height:28px;"></div>
+            <div style="position:absolute; top:21px; left:25px; font-size:0.72rem; font-weight:600; color:var(--accent);">Label</div>
+            <div style="position:absolute; top:57px; left:19px; background:var(--surface); border:1px solid var(--border); border-radius:5px; width:160px; height:36px;"></div>
+            <div style="position:absolute; top:65px; left:27px; font-size:0.7rem; color:var(--text-2);">Input field</div>
+            <div style="position:absolute; top:103px; left:23px; background:var(--accent); border-radius:5px; width:74px; height:26px;"></div>
+            <div style="position:absolute; top:109px; left:33px; font-size:0.68rem; font-weight:600; color:#fff;">Submit</div>
+          </div>
+          <p style="font-size:0.72rem; color:var(--text-2); margin-top:8px;">Slight offsets everywhere — 18px here, 21px there. Nothing truly aligns.</p>
+        </div>
+        <div>
+          <span class="demo-tag tag-good">✓ Snapped — everything aligns</span>
+          <div style="background:var(--surface-2); border-radius:10px; padding:24px; min-height:140px; position:relative;">
+            <div style="position:absolute; top:16px; left:24px; background:var(--accent); opacity:0.15; border-radius:4px; width:112px; height:28px;"></div>
+            <div style="position:absolute; top:20px; left:24px; font-size:0.72rem; font-weight:600; color:var(--accent);">Label</div>
+            <div style="position:absolute; top:56px; left:24px; background:var(--surface); border:1px solid var(--border); border-radius:5px; width:160px; height:36px;"></div>
+            <div style="position:absolute; top:64px; left:32px; font-size:0.7rem; color:var(--text-2);">Input field</div>
+            <div style="position:absolute; top:104px; left:24px; background:var(--accent); border-radius:5px; width:72px; height:24px;"></div>
+            <div style="position:absolute; top:110px; left:34px; font-size:0.68rem; font-weight:600; color:#fff;">Submit</div>
+          </div>
+          <p style="font-size:0.72rem; color:var(--text-2); margin-top:8px;">All elements share the same left edge — 24px. Grid-snapped, instantly consistent.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
       <h3>Spacing Hierarchies</h3>
       <p>
         Not all spacing is equal. Spacing encodes relationships: <strong>small spacing = close relationship</strong>, <strong>large spacing = separation</strong>.
@@ -1919,6 +1963,11 @@ main {
         <span class="vocab-term">8-point grid</span>
         <p class="vocab-def">A spacing system where all values are multiples of 8px. Creates rhythm and consistency across a product.</p>
         <p class="vocab-use"><strong>Use it:</strong> "This padding looks like 10px — that's off-grid. Can we align this to the 8-point system?"</p>
+      </div>
+      <div class="vocab-card">
+        <span class="vocab-term">object snapping</span>
+        <p class="vocab-def">A design tool feature that automatically aligns elements to each other, a grid, or guides when dragged close enough. Like a magnet for precision alignment.</p>
+        <p class="vocab-use"><strong>Use it:</strong> "This button is 3px off from the input — can you snap it to the same left edge?"</p>
       </div>
       <div class="vocab-card">
         <span class="vocab-term">negative space</span>
