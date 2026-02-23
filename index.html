@@ -1235,7 +1235,7 @@ main {
   to   { opacity: 1; }
 }
 .arena-panel {
-  background: var(--text);
+  background: var(--accent);
   border-radius: 14px;
   padding: 48px 48px 44px;
   max-width: 520px;
@@ -1254,15 +1254,15 @@ main {
   top: -60px; right: -60px;
   width: 260px; height: 260px;
   border-radius: 50%;
-  background: rgba(13,155,114,0.14);
+  background: rgba(255,255,255,0.10);
   pointer-events: none;
 }
 .arena-close {
   position: absolute;
   top: 16px; right: 18px;
-  background: rgba(255,255,255,0.08);
+  background: rgba(0,0,0,0.12);
   border: none;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.7);
   font-size: 1.1rem;
   width: 30px; height: 30px;
   border-radius: 50%;
@@ -1271,7 +1271,11 @@ main {
   transition: background 0.15s, color 0.15s;
   z-index: 1;
 }
-.arena-close:hover { background: rgba(255,255,255,0.14); color: #fff; }
+.arena-close:hover { background: rgba(0,0,0,0.22); color: #fff; }
+.arena-panel .cantunsee-eyebrow { color: rgba(255,255,255,0.7); }
+.arena-panel .cantunsee-link { background: #fff; color: var(--accent); }
+.arena-panel .cantunsee-link:hover { opacity: 0.92; }
+.arena-panel .cantunsee-stats { border-top-color: rgba(255,255,255,0.15); }
 </style>
 </head>
 <body>
@@ -1290,7 +1294,7 @@ main {
       <span style="font-family:var(--ff-display);font-size:clamp(1.5rem,3vw,2.1rem);font-weight:400;font-style:italic;color:#F9F6F1;line-height:1.15;letter-spacing:-0.01em;display:block;">Think you've got<br>a designer's eye?</span>
     </h3>
     <p style="font-size:0.9rem;color:rgba(249,246,241,0.6);max-width:420px;line-height:1.75;margin-bottom:28px;">Can't Unsee is a free online game with 100+ real design challenges — two versions of a UI, one correct. The differences get subtler as you advance. It's the fastest way to train the reflex of noticing what most people walk right past.</p>
-    <a class="cantunsee-link" href="https://cantunsee.space/" target="_blank" rel="noopener">Train your eye →</a>
+    <a class="cantunsee-link" href="https://cantunsee.space/" target="_blank" rel="noopener">Train your eyes →</a>
     <div class="cantunsee-stats">
       <div>
         <span class="cantunsee-stat-value">100+</span>
@@ -3195,7 +3199,7 @@ main {
       <h3>Think you've got<br>a designer's eye?</h3>
       <p>Can't Unsee is a free online game with 100+ real design challenges — two versions of a UI, one correct. The differences get subtler as you advance. It's the fastest way to train the reflex of noticing what most people walk right past.</p>
       <a class="cantunsee-link" href="https://cantunsee.space/" target="_blank" rel="noopener">
-        Train your eye →
+        Train your eyes →
       </a>
       <div class="cantunsee-stats">
         <div>
