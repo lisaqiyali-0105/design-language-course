@@ -1173,9 +1173,57 @@ main {
   margin-top: 2px;
   display: block;
 }
+/* ── FLOATING PILL ──────────────────────────────── */
+.test-pill {
+  position: fixed;
+  right: 24px;
+  bottom: 32px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--text);
+  color: #fff;
+  font-family: var(--ff-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 10px 18px;
+  border-radius: 100px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(30,28,25,0.22), 0 1px 4px rgba(30,28,25,0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.test-pill:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(13,155,114,0.30), 0 2px 6px rgba(13,155,114,0.15);
+  text-decoration: none;
+  color: #fff;
+}
+.test-pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  animation: pillPulse 2s ease-in-out infinite;
+}
+.test-pill:hover .test-pill-dot {
+  background: rgba(255,255,255,0.7);
+}
+@keyframes pillPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.7); }
+}
 </style>
 </head>
 <body>
+
+<a class="test-pill" href="#m11" title="Skip to the interactive challenge">
+  <span class="test-pill-dot"></span>
+  Test Your Eyes
+</a>
 
 <div id="progress-bar"></div>
 
@@ -1199,7 +1247,6 @@ main {
     <li class="nav-item"><a href="#m8"><span class="num">08</span> Giving Feedback</a></li>
     <li class="nav-item"><a href="#m9"><span class="num">09</span> Design Movements</a></li>
     <li class="nav-item"><a href="#m10"><span class="num">10</span> Navigation Patterns</a></li>
-    <li class="nav-item"><a href="#m11"><span class="num">11</span> Test Your Eye</a></li>
   </ul>
 
   <div class="sidebar-footer">
@@ -2841,11 +2888,11 @@ main {
     </div>
   </section>
 
-  <!-- ── MODULE 11: TEST YOUR EYE ─────────────────── -->
+  <!-- ── TEST YOUR EYES ───────────────────────────── -->
   <section class="module" id="m11">
     <div class="module-header">
-      <span class="module-num">Module 11 — Active Practice</span>
-      <h2>Test Your Eye</h2>
+      <span class="module-num">Active Practice</span>
+      <h2>Test Your Eyes</h2>
       <p class="module-tagline">You've learned the vocabulary. Now train the reflex.</p>
     </div>
 
