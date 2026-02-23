@@ -1213,14 +1213,100 @@ main {
   0%, 100% { opacity: 1; transform: scale(1); }
   50%       { opacity: 0.4; transform: scale(0.7); }
 }
+
+/* ── PRACTICE ARENA MODAL ───────────────────────── */
+.arena-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(30,28,25,0.55);
+  backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.arena-overlay.open {
+  display: flex;
+  animation: arenaFadeIn 0.22s ease both;
+}
+@keyframes arenaFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.arena-panel {
+  background: var(--text);
+  border-radius: 14px;
+  padding: 48px 48px 44px;
+  max-width: 520px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  animation: arenaPanelIn 0.28s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+@keyframes arenaPanelIn {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.arena-panel::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 260px; height: 260px;
+  border-radius: 50%;
+  background: rgba(13,155,114,0.14);
+  pointer-events: none;
+}
+.arena-close {
+  position: absolute;
+  top: 16px; right: 18px;
+  background: rgba(255,255,255,0.08);
+  border: none;
+  color: rgba(255,255,255,0.55);
+  font-size: 1.1rem;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s, color 0.15s;
+  z-index: 1;
+}
+.arena-close:hover { background: rgba(255,255,255,0.14); color: #fff; }
 </style>
 </head>
 <body>
 
-<a class="test-pill" href="test-your-eyes.html" target="_blank" rel="noopener">
+<button class="test-pill" id="arena-trigger">
   <span class="test-pill-dot"></span>
-  Ready to test your eyes?
-</a>
+  Ready to train your eyes?
+</button>
+
+<!-- Practice Arena Modal -->
+<div class="arena-overlay" id="arena-overlay">
+  <div class="arena-panel">
+    <button class="arena-close" id="arena-close">×</button>
+    <span class="cantunsee-eyebrow">Practice Arena</span>
+    <h3 class="cantunsee-card" style="background:none;padding:0;margin:0 0 14px;border-radius:0;overflow:visible;">
+      <span style="font-family:var(--ff-display);font-size:clamp(1.5rem,3vw,2.1rem);font-weight:400;font-style:italic;color:#F9F6F1;line-height:1.15;letter-spacing:-0.01em;display:block;">Think you've got<br>a designer's eye?</span>
+    </h3>
+    <p style="font-size:0.9rem;color:rgba(249,246,241,0.6);max-width:420px;line-height:1.75;margin-bottom:28px;">Can't Unsee is a free online game with 100+ real design challenges — two versions of a UI, one correct. The differences get subtler as you advance. It's the fastest way to train the reflex of noticing what most people walk right past.</p>
+    <a class="cantunsee-link" href="https://cantunsee.space/" target="_blank" rel="noopener">Train your eye →</a>
+    <div class="cantunsee-stats">
+      <div>
+        <span class="cantunsee-stat-value">100+</span>
+        <span class="cantunsee-stat-label">design challenges</span>
+      </div>
+      <div>
+        <span class="cantunsee-stat-value">3 levels</span>
+        <span class="cantunsee-stat-label">Easy → Advanced</span>
+      </div>
+      <div>
+        <span class="cantunsee-stat-value">Free</span>
+        <span class="cantunsee-stat-label">no sign-up needed</span>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div id="progress-bar"></div>
 
@@ -3411,6 +3497,27 @@ document.querySelectorAll('.movement-card').forEach(card => {
       });
     });
   });
+})();
+
+// ── PRACTICE ARENA MODAL ──────────────────────────
+(function() {
+  var trigger = document.getElementById('arena-trigger');
+  var overlay = document.getElementById('arena-overlay');
+  var closeBtn = document.getElementById('arena-close');
+
+  function open() {
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  trigger.addEventListener('click', open);
+  closeBtn.addEventListener('click', close);
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) close(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close(); });
 })();
 
 function closeModal() {
