@@ -653,6 +653,10 @@ main {
 .mat-card-text { font-size: 6.5px; color: #757575; line-height: 1.4; font-family: var(--ff-body); }
 .mat-fab { position: absolute; bottom: 8px; right: 8px; width: 32px; height: 32px; background: #E91E63; border-radius: 50%; box-shadow: 0 3px 6px rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 16px; line-height: 1; }
 
+/* Sketch / Hand-Drawn Illustration */
+.sketch-demo { background: #F7F2E8; width: 100%; display: flex; align-items: center; justify-content: center; padding: 12px; box-sizing: border-box; }
+.sketch-demo svg { width: 100%; height: auto; max-width: 200px; }
+
 /* Brutalism */
 .brutalist-demo { background: #fff; width: 100%; display: flex; flex-direction: column; padding: 12px; box-sizing: border-box; border: 0; outline: 3px solid #000; outline-offset: -3px; }
 .br-headline { font-size: 20px; font-weight: 900; color: #000; text-transform: uppercase; line-height: 0.9; letter-spacing: -0.02em; border-bottom: 3px solid #000; padding-bottom: 8px; margin-bottom: 8px; font-family: var(--ff-body); }
@@ -2736,6 +2740,45 @@ main {
         </div>
       </div>
 
+      <!-- Sketch / Hand-Drawn Illustration -->
+      <div class="movement-card">
+        <div class="movement-demo-area" style="padding:0;">
+          <div class="sketch-demo">
+            <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <filter id="rough">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="4" result="noise"/>
+                  <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G"/>
+                </filter>
+              </defs>
+              <g filter="url(#rough)" stroke="#1a1108" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Outer frame -->
+                <rect x="12" y="10" width="176" height="122" rx="2" stroke-width="2.2"/>
+                <!-- Figure silhouette - head -->
+                <ellipse cx="88" cy="58" rx="20" ry="21" fill="#1a1108" opacity="0.82" stroke="none"/>
+                <!-- Figure silhouette - shoulders -->
+                <path d="M 50 132 Q 65 108 88 104 Q 111 108 126 132" fill="#1a1108" opacity="0.75" stroke="none"/>
+                <!-- Play button -->
+                <polygon points="81,50 81,68 99,59" fill="#1a1108" stroke="none" opacity="0.9"/>
+                <!-- PIP box top right -->
+                <rect x="136" y="16" width="44" height="33" rx="1" stroke-width="2"/>
+                <!-- PIP figure - head -->
+                <ellipse cx="154" cy="25" rx="8" ry="8" fill="#1a1108" opacity="0.65" stroke="none"/>
+                <!-- PIP figure - shoulders -->
+                <path d="M 139 49 Q 154 41 169 49" stroke-width="1.8" fill="none" opacity="0.7"/>
+                <!-- Bottom progress bar -->
+                <line x1="12" y1="138" x2="188" y2="138" stroke-width="1.5" opacity="0.5"/>
+                <circle cx="22" cy="138" r="3.5" fill="#1a1108" stroke="none" opacity="0.7"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="movement-info">
+          <span class="movement-name">Sketch / Hand-Drawn Illustration</span>
+          <p class="movement-tagline">Charcoal or pencil texture, loose outlines, monochromatic, minimal detail. Feels human and warm — a deliberate contrast to polished digital aesthetics. Common in editorial design, newsletters, and brand illustration.</p>
+        </div>
+      </div>
+
     </div>
 
     <div class="insight">
@@ -2758,6 +2801,11 @@ main {
         <span class="vocab-term">brutalism</span>
         <p class="vocab-def">An aesthetic that celebrates raw, unpolished structure. High contrast, visible grid, stark typography, intentional "ugly."</p>
         <p class="vocab-use"><strong>Use it:</strong> "There's a brutalist quality here that feels right for this brand — let's lean into it rather than polish it away."</p>
+      </div>
+      <div class="vocab-card">
+        <span class="vocab-term">sketch illustration</span>
+        <p class="vocab-def">A hand-drawn aesthetic using pencil or charcoal textures, loose outlines, and minimal detail. Monochromatic and intentionally imperfect — signals warmth and craft over polish.</p>
+        <p class="vocab-use"><strong>Use it:</strong> "The illustration style feels too polished for this brand — can we go more sketch, rougher lines, less clean?"</p>
       </div>
       <div class="vocab-card">
         <span class="vocab-term">visual language</span>
