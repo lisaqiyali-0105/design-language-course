@@ -6,14 +6,14 @@
 <title>The Language of Design — A PM's Course</title>
 
 <!-- SEO -->
-<meta name="description" content="A PM's complete course in design vocabulary — 10 modules with real visual examples. Learn to think and speak like a designer without becoming one.">
+<meta name="description" content="A PM's complete course in design vocabulary — 10 modules with real visual examples. Learn to think and speak like a designer so you can lead the work.">
 <link rel="canonical" href="https://lisaqiyali-0105.github.io/design-language-course/">
 
 <!-- Open Graph (LinkedIn, Facebook, Slack) -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://lisaqiyali-0105.github.io/design-language-course/">
 <meta property="og:title" content="The Language of Design — A PM's Course">
-<meta property="og:description" content="A PM's complete course in design vocabulary — 10 modules with real visual examples. Learn to think and speak like a designer without becoming one.">
+<meta property="og:description" content="A PM's complete course in design vocabulary — 10 modules with real visual examples. Learn to think and speak like a designer so you can lead the work.">
 <meta property="og:image" content="https://lisaqiyali-0105.github.io/design-language-course/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -577,6 +577,40 @@ main {
 
 .glossary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 24px 0; }
 
+/* ── MOBILE NAV ───────────────────────────────────── */
+.mob-nav-btn {
+  display: none;
+  position: fixed;
+  top: 14px; right: 16px;
+  z-index: 300;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  width: 40px; height: 40px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.mob-nav-btn span {
+  display: block;
+  width: 18px; height: 1.5px;
+  background: var(--text);
+  border-radius: 1px;
+}
+.mob-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 150;
+  backdrop-filter: blur(2px);
+}
+.mob-overlay.visible { display: block; }
+
 /* ── ANIMATIONS ───────────────────────────────────── */
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes fadeUp {
@@ -937,8 +971,17 @@ main {
 /* ── RESPONSIVE ───────────────────────────────────── */
 @media (max-width: 900px) {
   :root { --sidebar: 0px; }
-  .sidebar { display: none; }
-  main { padding: 32px 24px 80px; }
+  .mob-nav-btn { display: flex; }
+  .sidebar {
+    left: -268px;
+    transition: left 0.25s ease;
+    width: 268px;
+  }
+  .sidebar.open {
+    left: 0;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.12);
+  }
+  main { padding: 48px 24px 80px; }
   #progress-bar { left: 0; }
 }
 
@@ -1346,6 +1389,11 @@ main {
   </div>
 </nav>
 
+<button class="mob-nav-btn" id="mob-nav-btn" aria-label="Open navigation">
+  <span></span><span></span><span></span>
+</button>
+<div class="mob-overlay" id="mob-overlay"></div>
+
 <!-- MAIN CONTENT -->
 <main>
 
@@ -1354,9 +1402,8 @@ main {
     <span class="hero-eyebrow">Lisa Qiya Li · 2026</span>
     <h1>The Language<br>of <em>Design</em></h1>
     <p class="hero-desc">
-      A PM's complete course in design vocabulary — not to become a designer,
-      but to earn a seat at the table where design decisions get made.
-      Ten modules. Real visual examples. No fluff.
+      A PM's complete course in design vocabulary — so you can earn a seat at the table
+      where design decisions get made. Ten modules. Real visual examples. No fluff.
     </p>
     <div class="hero-meta">
       <div class="hero-meta-item">
@@ -1392,7 +1439,7 @@ main {
         <strong>Hierarchy is the intentional arrangement of elements to guide the viewer's eye in a specific order.</strong>
       </p>
       <p>
-        Designers create hierarchy using six variables: <strong>size</strong>, <strong>weight</strong>,
+        Designers create hierarchy using 6 variables: <strong>size</strong>, <strong>weight</strong>,
         <strong>contrast</strong>, <strong>color</strong>, <strong>spacing</strong>, and <strong>position</strong>.
         When these work together, the eye moves naturally. When they conflict, the user's eye stutters — they can't find the entry point.
       </p>
@@ -1837,7 +1884,7 @@ main {
     <div class="module-header">
       <span class="module-num">Module 04 — The Invisible Structure</span>
       <h2>Spacing & Layout</h2>
-      <p class="module-tagline">"Space is not emptiness. It is structure, breathing room, and hierarchy — all at once."</p>
+      <p class="module-tagline">"Space is structure, breathing room, and hierarchy — all at once."</p>
     </div>
 
     <div class="prose">
@@ -2004,7 +2051,7 @@ main {
     <div class="module-header">
       <span class="module-num">Module 05 — How Design Scales</span>
       <h2>Components &<br>Design Systems</h2>
-      <p class="module-tagline">"Good design scales through systems, not heroic one-off efforts."</p>
+      <p class="module-tagline">"Good design scales through systems. Heroic one-off effort doesn't."</p>
     </div>
 
     <div class="prose">
@@ -2828,7 +2875,7 @@ main {
     <div class="module-header">
       <span class="module-num">Module 10 — The Skeleton of a Product</span>
       <h2>Navigation Patterns</h2>
-      <p class="module-tagline">"Navigation is not a UI element. It is the mental model of your entire product made visible."</p>
+      <p class="module-tagline">"Navigation is the mental model of your entire product, made visible."</p>
     </div>
 
     <div class="prose">
@@ -3088,7 +3135,7 @@ main {
     <!-- Score bar -->
     <div class="quiz-score-bar">
       <span class="quiz-score-label">Score</span>
-      <span class="quiz-score-value" id="quiz-score-value">0 / 5</span>
+      <span class="quiz-score-value" id="quiz-score-value">— / 5</span>
       <div class="quiz-score-dots">
         <div class="quiz-dot" id="qdot-0"></div>
         <div class="quiz-dot" id="qdot-1"></div>
@@ -3630,6 +3677,28 @@ function closeModal() {
 modalClose.addEventListener('click', closeModal);
 modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// ── MOBILE NAV ───────────────────────────────────
+(function() {
+  var mobBtn = document.getElementById('mob-nav-btn');
+  var mobOverlay = document.getElementById('mob-overlay');
+  var sidebarEl = document.querySelector('.sidebar');
+  function openNav() {
+    sidebarEl.classList.add('open');
+    mobOverlay.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeNav() {
+    sidebarEl.classList.remove('open');
+    mobOverlay.classList.remove('visible');
+    document.body.style.overflow = '';
+  }
+  if (mobBtn) mobBtn.addEventListener('click', openNav);
+  if (mobOverlay) mobOverlay.addEventListener('click', closeNav);
+  document.querySelectorAll('.nav-item a').forEach(function(link) {
+    link.addEventListener('click', closeNav);
+  });
+})();
 </script>
 </body>
 </html>
